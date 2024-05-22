@@ -16,14 +16,14 @@ class VendorUploadScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ProductProvider _productProvider =
-    Provider.of<ProductProvider>(context);
+        Provider.of<ProductProvider>(context);
     return DefaultTabController(
       length: 4, //tab bar count
       child: Form(
         key: _formKey,
         child: Scaffold(
           appBar: AppBar(
-            elevation: 10,
+            elevation: 20,
             backgroundColor: Colors.white,
             title: const Text(
               'UPLOAD PRODUCT',
@@ -56,7 +56,7 @@ class VendorUploadScreen extends StatelessWidget {
             ],
           ),
           bottomSheet: Padding(
-            padding:const EdgeInsets.all(10.0),
+            padding: const EdgeInsets.all(20.0),
             child: ElevatedButton(
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.green,
@@ -76,24 +76,24 @@ class VendorUploadScreen extends StatelessWidget {
                     'productId': productId,
                     'productName': _productProvider.productData['productName'],
                     'productPrice':
-                    _productProvider.productData['productPrice'],
+                        _productProvider.productData['productPrice'],
                     'productQuantity':
-                    _productProvider.productData['productQuantity'],
+                        _productProvider.productData['productQuantity'],
                     'productCategory':
-                    _productProvider.productData['productCategory'],
+                        _productProvider.productData['productCategory'],
                     'productDescription':
-                    _productProvider.productData['productDescription'],
+                        _productProvider.productData['productDescription'],
                     'chargeShipping':
-                    _productProvider.productData['chargeShipping'],
+                        _productProvider.productData['chargeShipping'],
                     'shippingFee': _productProvider.productData['shippingFee'],
                     'productScheduleDate':
-                    _productProvider.productData['productScheduleDate'],
+                        _productProvider.productData['productScheduleDate'],
                     'productNutritionValue':
-                    _productProvider.productData['productNutritionValue'],
+                        _productProvider.productData['productNutritionValue'],
                     'productSizeList':
-                    _productProvider.productData['productSizeList'],
+                        _productProvider.productData['productSizeList'],
                     'productImageUrlList':
-                    _productProvider.productData['productImageUrlList'],
+                        _productProvider.productData['productImageUrlList'],
                   });
                 }
               },

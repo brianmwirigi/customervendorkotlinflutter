@@ -79,7 +79,7 @@ class _GeneralTabScreenState extends State<GeneralTabScreen>
                 return null;
               },
               onChanged: (value) {
-                _productProvider.getFormData(productPrice: double.parse(value));
+                _productProvider.getFormData(productPrice: int.parse(value));
               },
               decoration: const InputDecoration(
                 labelText: 'Enter Product Price in Kes',
@@ -98,7 +98,7 @@ class _GeneralTabScreenState extends State<GeneralTabScreen>
               },
               onChanged: (value) {
                 _productProvider.getFormData(
-                    productQuantity: double.parse(value));
+                    productQuantity: int.parse(value));
               },
               decoration: const InputDecoration(
                 labelText: 'Enter Product quantity in gram\'s',
@@ -157,6 +157,7 @@ class _GeneralTabScreenState extends State<GeneralTabScreen>
               height: 30,
             ),
             Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 TextButton(
                   onPressed: () {

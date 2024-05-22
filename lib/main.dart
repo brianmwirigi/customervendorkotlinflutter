@@ -1,6 +1,7 @@
 import 'package:customervendorkotlinflutter/firebase_options.dart';
 import 'package:customervendorkotlinflutter/providers/productprovider.dart';
 import 'package:customervendorkotlinflutter/vendors/views/authentications/vendorauthenticationscreen.dart';
+import 'package:customervendorkotlinflutter/vendors/views/screens/mainvendorscreen.dart';
 import 'package:customervendorkotlinflutter/views/customers/authentications/registerscreen.dart';
 import 'package:customervendorkotlinflutter/views/customers/maincustomerscreen.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -37,8 +38,10 @@ class MyApp extends StatelessWidget {
         primaryColor: Colors.green,
         fontFamily: 'Taviraj-semiBold',
       ),
-      home: // VendorAuthenticationScreen(),
-      CustomerRegisterScreen(),//MainCustomerScreen(),
+      home: VendorAuthenticationScreen(),
+      //CustomerRegisterScreen(),
+      //MainCustomerScreen(),
+      //MainVendorScreen(),
       builder: EasyLoading.init(),
     );
   }

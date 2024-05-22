@@ -8,9 +8,7 @@ class VendorAccountScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
         child: ElevatedButton(
-      onPressed: () async {
-        _authentication.signOut();
-      },
+      onPressed: (){},
       child: const Text('Logout'),
     ));
   }

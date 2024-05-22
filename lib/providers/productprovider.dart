@@ -3,10 +3,11 @@ import 'package:flutter/widgets.dart';
 class ProductProvider with ChangeNotifier {
   Map<String, dynamic> productData = {};
 
+  //function to get the form data
   getFormData({
     String? productName,
-    double? productPrice,
-    double? productQuantity,
+    int? productPrice,
+    int? productQuantity,
     String? productCategory,
     String? productDescription,
     DateTime? productScheduleDate,

@@ -21,7 +21,7 @@ class _ShippingTabScreenState extends State<ShippingTabScreen>
     return Column(
       children: [
         CheckboxListTile(
-          title: Text(
+          title: const Text(
             'Charge Shipping',
             style: TextStyle(
               fontSize: 20,
@@ -43,7 +43,7 @@ class _ShippingTabScreenState extends State<ShippingTabScreen>
             child: TextFormField(
               validator: (value) {
                 if (value!.isEmpty) {
-                  return 'Please enter Shipping Fee in Kshs';
+                  return 'Please enter Shipping Fee in Kes';
                 }
                 return null;
               },
@@ -51,9 +51,9 @@ class _ShippingTabScreenState extends State<ShippingTabScreen>
                 _productProvider.getFormData(shippingFee: int.parse(value));
               },
               keyboardType: TextInputType.number,
-              decoration: InputDecoration(
-                labelText: 'Enter Shipping Fee in Kshs',
-                hintText: 'Shipping Fee',
+              decoration: const InputDecoration(
+                labelText: 'Enter Shipping Fee in Kes',
+                hintText: '500',
               ),
             ),
           ),
