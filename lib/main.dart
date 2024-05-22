@@ -39,9 +39,9 @@ class MyApp extends StatelessWidget {
         primaryColor: Colors.green,
         fontFamily: 'Taviraj-semiBold',
       ),
-      home: VendorAuthenticationScreen(),
-      //CustomerRegisterScreen(),
-      //MainCustomerScreen(),
+      home: //VendorAuthenticationScreen(),
+          //CustomerRegisterScreen(),
+          const MainCustomerScreen(),
       //MainVendorScreen(),
       builder: EasyLoading.init(),
     );
