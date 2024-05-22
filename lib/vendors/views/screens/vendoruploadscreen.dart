@@ -1,10 +1,13 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:customervendorkotlinflutter/providers/productprovider.dart';
+import 'package:customervendorkotlinflutter/utilities/showsnackbar.dart';
+import 'package:customervendorkotlinflutter/vendors/views/screens/mainvendorscreen.dart';
 import 'package:customervendorkotlinflutter/vendors/views/screens/uploadtabscreens/attributetabscreen.dart';
 import 'package:customervendorkotlinflutter/vendors/views/screens/uploadtabscreens/generaltabscreen.dart';
 import 'package:customervendorkotlinflutter/vendors/views/screens/uploadtabscreens/imagetabscreen.dart';
 import 'package:customervendorkotlinflutter/vendors/views/screens/uploadtabscreens/shippingtabscreen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:provider/provider.dart';
 import 'package:uuid/uuid.dart';
 
@@ -13,7 +16,6 @@ class VendorUploadScreen extends StatelessWidget {
 
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
-  @override
   Widget build(BuildContext context) {
     final ProductProvider _productProvider =
         Provider.of<ProductProvider>(context);
@@ -65,6 +67,7 @@ class VendorUploadScreen extends StatelessWidget {
                 ),
               ),
               onPressed: () async {
+                EasyLoading.show(status: 'Uploading Product');
                 if (_formKey.currentState!.validate()) {
                   //upload product data to firestore
 
@@ -83,18 +86,33 @@ class VendorUploadScreen extends StatelessWidget {
                         _productProvider.productData['productCategory'],
                     'productDescription':
                         _productProvider.productData['productDescription'],
+                    'productScheduleDate':
+                        _productProvider.productData['productScheduleDate'],
                     'chargeShipping':
                         _productProvider.productData['chargeShipping'],
                     'shippingFee': _productProvider.productData['shippingFee'],
-                    'productScheduleDate':
-                        _productProvider.productData['productScheduleDate'],
                     'productNutritionValue':
                         _productProvider.productData['productNutritionValue'],
                     'productSizeList':
                         _productProvider.productData['productSizeList'],
                     'productImageUrlList':
                         _productProvider.productData['productImageUrlList'],
+                  }).whenComplete(() {
+                    EasyLoading.dismiss();
+                    mySnackBar(context, 'Product Uploaded');
+                    _formKey.currentState!.reset();
+                    _productProvider.clearData();
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) {
+                      return const MainVendorScreen();
+                    }));
                   });
+                } else {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text('Please fill all the fields'),
+                    ),
+                  );
                 }
               },
               child: const Text(

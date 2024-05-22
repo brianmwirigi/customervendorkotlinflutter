@@ -101,7 +101,7 @@ class _GeneralTabScreenState extends State<GeneralTabScreen>
                     productQuantity: int.parse(value));
               },
               decoration: const InputDecoration(
-                labelText: 'Enter Product quantity in gram\'s',
+                labelText: 'Enter Product Quantity in gram\'s',
                 hintText: 'example: 10000',
               ),
             ),

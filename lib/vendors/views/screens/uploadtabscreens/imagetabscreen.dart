@@ -90,20 +90,25 @@ class _ImagesTabScreenState extends State<ImagesTabScreen>
               EasyLoading.show(status: 'Saving Images');
               //code to upload images to firebase storage
               for (var img in _productImage) {
-                Reference productImageReference =
-                    _storage.ref().child('productImages').child(const Uuid().v4());
+                Reference productImageReference = _storage
+                    .ref()
+                    .child('ProductImages')
+                    .child(const Uuid().v4());
+
                 await productImageReference.putFile(img).whenComplete(() async {
                   await productImageReference.getDownloadURL().then((value) {
                     setState(() {
                       _isSave = true;
                       _productImageUrlList.add(value);
-                      _productProvider.getFormData(
-                          productImageUrlList: _productImageUrlList);
-                      EasyLoading.dismiss();
                     });
                   });
                 });
               }
+              setState(() {
+                _productProvider.getFormData(
+                    productImageUrlList: _productImageUrlList);
+                EasyLoading.dismiss();
+              });
             },
             child: _productImage.isNotEmpty
                 ? Text(

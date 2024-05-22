@@ -15,6 +15,7 @@ class LandingScreen extends StatelessWidget {
     final CollectionReference _vendorStream =
         FirebaseFirestore.instance.collection('Vendors');
 
+
     return Scaffold(
         body: StreamBuilder<DocumentSnapshot>(
       stream: _vendorStream.doc(_auth.currentUser!.uid).snapshots(),
