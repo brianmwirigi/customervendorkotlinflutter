@@ -40,9 +40,9 @@ class MyApp extends StatelessWidget {
         fontFamily: 'Taviraj-semiBold',
       ),
       home: //VendorAuthenticationScreen(),
-          //CustomerRegisterScreen(),
-          const MainCustomerScreen(),
-      //MainVendorScreen(),
+          // CustomerRegisterScreen(),
+          MainCustomerScreen(),
+     // MainVendorScreen(),
       builder: EasyLoading.init(),
     );
   }

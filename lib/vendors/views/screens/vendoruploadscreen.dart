@@ -68,10 +68,8 @@ class VendorUploadScreen extends StatelessWidget {
                 ),
               ),
               onPressed: () async {
-                EasyLoading.show(status: 'Uploading Product');
                 if (_formKey.currentState!.validate()) {
                   //upload product data to firestore
-
                   final productId = const Uuid().v4();
                   await _firestore
                       .collection('VendorProducts')
@@ -98,7 +96,7 @@ class VendorUploadScreen extends StatelessWidget {
                         _productProvider.productData['productSizeList'],
                     'productImageUrlList':
                         _productProvider.productData['productImageUrlList'],
-                  }).whenComplete(() {
+                  }).then((value) {
                     _productProvider.clearData();
                     _formKey.currentState!.reset();
                     EasyLoading.dismiss();
@@ -107,7 +105,12 @@ class VendorUploadScreen extends StatelessWidget {
                         MaterialPageRoute(builder: (context) {
                       return const MainVendorScreen();
                     }));
+                  }).catchError((error) {
+                    EasyLoading.dismiss();
+                    mySnackBar(context, error.toString());
                   });
+                } else {
+                  mySnackBar(context, 'Please fill all the fields');
                 }
               },
               child: const Text(

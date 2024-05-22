@@ -33,46 +33,55 @@ class _BannerWidgetState extends State<BannerWidget> {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context ) {
     return Padding(
       padding: const EdgeInsets.all(10.0),
-      child: Container(
-        height: 200,
-        width: MediaQuery.of(context).size.width,
-        decoration: BoxDecoration(
-          color: Colors.green,
-          borderRadius: BorderRadius.circular(20),
-        ),
-        child: PageView.builder(
-          itemCount: _bannerImage.length,
-          itemBuilder: (context, index) {
-            return ClipRRect(
-              borderRadius: BorderRadius.circular(20),
-              child: CachedNetworkImage(
-                imageUrl: _bannerImage[index],
-                fit: BoxFit.contain,
-                placeholder: (context, url) => Shimmer(
-                  duration: const Duration(seconds: 10),
-                  interval: const Duration(seconds: 2),
-                  color: Colors.white,
-                  colorOpacity: 0,
-                  enabled: true,
-                  direction: const ShimmerDirection.fromLTRB(),
-                  child: Container(
-                    height: 200,
-                    width: MediaQuery.of(context).size.width,
-                    decoration: BoxDecoration(
-                      color: Colors.green,
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                  ),
-                ),
-                errorWidget: (context, url, error) => const Icon(Icons.error),
-
+      child: LayoutBuilder(
+        builder: (BuildContext context, BoxConstraints constraints ) {
+          return Container(
+            height: 200,
+            width: MediaQuery.of(context).size.width,
+            decoration: BoxDecoration(
+              gradient: const RadialGradient(
+                colors: [Colors.green, Colors.white],
+                center: Alignment(0.0, 0.0),
+                radius: 1,
               ),
-            );
-          },
-        ),
+              color: Colors.green,
+              borderRadius: BorderRadius.circular(20),
+            ),
+            child: PageView.builder(
+              itemCount: _bannerImage.length,
+              itemBuilder: (context, index) {
+                return ClipRRect(
+                  borderRadius: BorderRadius.circular(20),
+                  child: CachedNetworkImage(
+                    imageUrl: _bannerImage[index],
+                    fit: BoxFit.contain,
+                    placeholder: (context, url) => Shimmer(
+                      duration: const Duration(seconds: 10),
+                      interval: const Duration(seconds: 2),
+                      color: Colors.white,
+                      colorOpacity: 0,
+                      enabled: true,
+                      direction: const ShimmerDirection.fromLTRB(),
+                      child: Container(
+                        height: 200,
+                        width: MediaQuery.of(context).size.width,
+                        decoration: BoxDecoration(
+                          color: Colors.green,
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                      ),
+                    ),
+                    errorWidget: (context, url, error) => const Icon(Icons.error),
+
+                  ),
+                );
+              },
+            ),
+          );
+        }
       ),
     );
   }

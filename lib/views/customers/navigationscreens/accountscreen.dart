@@ -14,10 +14,10 @@ class AccountScreen extends StatelessWidget {
       builder:
           (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
         if (snapshot.hasError) {
-          return const Text('Something went wrong');
+          return const Center(child: Text('Something went wrong'));
         }
         if (snapshot.hasData && !snapshot.data!.exists) {
-          return const Text('User does not exits');
+          return const Center(child: Text('User does not exits'));
         }
         if (snapshot.connectionState == ConnectionState.done) {
           Map<String, dynamic> data =

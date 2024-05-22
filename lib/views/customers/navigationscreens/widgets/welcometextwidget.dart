@@ -15,14 +15,14 @@ class WelcomeTextWidget extends StatelessWidget {
           const Text(
             "Hello, What are you \nlooking for today? 👀",
             style: TextStyle(
-              fontSize: 30,
+              fontSize: 20,
               fontWeight: FontWeight.bold,
               fontFamily: 'Taviraj-semiBold',
             ),
           ),
           Container(
-            width: 50,
-            height: 50,
+            width: 40,
+            height: 40,
             decoration: BoxDecoration(
               color: Colors.green,
               borderRadius: BorderRadius.circular(10),

@@ -9,18 +9,16 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const SizedBox(height: 10),
-        const WelcomeTextWidget(),
-        const SizedBox(height: 10),
-        const SearchInputWidget(),
-        const SizedBox(height: 10),
-        BannerWidget(),
-        const SizedBox(height: 10),
-        CategoryTextWidget(),
-      ],
+    return SingleChildScrollView(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const WelcomeTextWidget(),
+          const SearchInputWidget(),
+          BannerWidget(),
+          CategoryTextWidget(),
+        ],
+      ),
     );
   }
 }
