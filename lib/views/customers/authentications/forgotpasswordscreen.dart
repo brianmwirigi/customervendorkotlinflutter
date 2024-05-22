@@ -71,7 +71,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                     },
                     decoration:const InputDecoration(
                       labelText: 'Enter Email Address',
-                      hintText: 'Email',
+                      hintText: 'example: johnDoe@gmail.com',
                     ),
                   ),
                 ),

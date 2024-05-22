@@ -36,7 +36,7 @@ class _GeneralTabScreenState extends State<GeneralTabScreen>
     super.initState();
   }
 
-  String formatedDate(date) {
+  String formattedDate(date) {
     final outputDateFormat = DateFormat('dd/MM/yyyy');
     final outputDate = outputDateFormat.format(date);
     return outputDate;
@@ -65,7 +65,7 @@ class _GeneralTabScreenState extends State<GeneralTabScreen>
               },
               decoration: const InputDecoration(
                 labelText: 'Enter Product Name',
-                hintText: 'ex. Pineapple',
+                hintText: 'example: Pineapple',
               ),
             ),
             const SizedBox(
@@ -83,7 +83,7 @@ class _GeneralTabScreenState extends State<GeneralTabScreen>
               },
               decoration: const InputDecoration(
                 labelText: 'Enter Product Price in Kes',
-                hintText: 'ex. 120',
+                hintText: 'example: 500',
               ),
             ),
             const SizedBox(
@@ -102,7 +102,7 @@ class _GeneralTabScreenState extends State<GeneralTabScreen>
               },
               decoration: const InputDecoration(
                 labelText: 'Enter Product quantity in gram\'s',
-                hintText: 'ex. 10,000',
+                hintText: 'example: 10000',
               ),
             ),
             const SizedBox(
@@ -150,7 +150,7 @@ class _GeneralTabScreenState extends State<GeneralTabScreen>
                 ),
                 labelText: 'Enter Product Description',
                 hintText:
-                    'ex. Organic Fresh Pineapple from the kakuzi farm in thika county ....',
+                    'example: Organic Fresh Pineapple from the kakuzi farm in thika county ....',
               ),
             ),
             const SizedBox(
@@ -183,7 +183,7 @@ class _GeneralTabScreenState extends State<GeneralTabScreen>
                 ),
                 if (_productProvider.productData['productScheduleDate'] != null)
                   Text(
-                    formatedDate(
+                    formattedDate(
                       _productProvider.productData['productScheduleDate'],
                     ),
                   )

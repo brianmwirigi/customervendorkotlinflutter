@@ -56,7 +56,7 @@ class _VendorRegistrationScreenState extends State<VendorRegistrationScreen> {
 
   final List<String> _taxOptions = ['YES', 'NO'];
 
-  String? _taxStatus;
+  String? _taxStatus = 'NO';
 
   _saveVendorDetails() async {
     EasyLoading.show(
@@ -159,14 +159,14 @@ class _VendorRegistrationScreenState extends State<VendorRegistrationScreen> {
                       onChanged: (value) => businessName = value,
                       validator: (value) {
                         if (value!.isEmpty) {
-                          return 'Please enter your business name';
+                          return 'Please enter your  Business Name';
                         }
                         return null;
                       },
                       keyboardType: TextInputType.name,
                       decoration: const InputDecoration(
                         labelText: 'Business Name',
-                        hintText: 'ex. Beyond Fruits  Ltd',
+                        hintText: 'example: Beyond Fruits  Ltd',
                       ),
                     ),
                     const SizedBox(height: 10),
@@ -180,8 +180,8 @@ class _VendorRegistrationScreenState extends State<VendorRegistrationScreen> {
                       },
                       keyboardType: TextInputType.emailAddress,
                       decoration: const InputDecoration(
-                        labelText: 'Email Adresss',
-                        hintText: 'ex. beyondfruits@gmail.com',
+                        labelText: 'Enter Email Address',
+                        hintText: 'example: beyondfruits@gmail.com',
                       ),
                     ),
                     const SizedBox(height: 10),
@@ -196,7 +196,7 @@ class _VendorRegistrationScreenState extends State<VendorRegistrationScreen> {
                       keyboardType: TextInputType.phone,
                       decoration: const InputDecoration(
                         labelText: 'Phone Number',
-                        hintText: 'ex. 0712345678',
+                        hintText: 'example: 0712345678',
                       ),
                     ),
                     Padding(
@@ -257,7 +257,7 @@ class _VendorRegistrationScreenState extends State<VendorRegistrationScreen> {
                               onChanged: (value) => taxNumber = value,
                               decoration: const InputDecoration(
                                 labelText: 'Tax Number',
-                                hintText: 'ex. 1234567890',
+                                hintText: 'example: 1234567890',
                               ),
                             ),
                           )

@@ -1,4 +1,5 @@
 import 'package:customervendorkotlinflutter/providers/productprovider.dart';
+import 'package:customervendorkotlinflutter/utilities/showsnackbar.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -14,7 +15,7 @@ class _AttributeTabScreenState extends State<AttributeTabScreen>
   final TextEditingController _sizeController = TextEditingController();
   bool _sizeEntered = false;
 
-  List<String> _sizeList = [];
+  final List<String> _sizeList = [];
 
   bool _isSave = false;
 
@@ -30,19 +31,19 @@ class _AttributeTabScreenState extends State<AttributeTabScreen>
           TextFormField(
             validator: (value) {
               if (value!.isEmpty) {
-                return 'Please enter product Dietry Fibre Value per 100 gram\'s';
+                return 'Please enter product Dietary Fibre Value per 100 gram\'s';
               }
               return null;
             },
             onChanged: (value) {
               _productProvider.getFormData(productNutritionValue: value);
             },
-            decoration: InputDecoration(
-              labelText: 'Enter Product Dietry Fibre Value per 100 gram\'s',
-              hintText: 'Product Nutrition Dietry fibre value per 100 gram\'s',
+            decoration: const InputDecoration(
+              labelText: 'Enter Product Dietary Fibre per 100 grams',
+              hintText: 'example: 5 grams',
             ),
           ),
-          SizedBox(height: 10.0),
+          const SizedBox(height: 10.0),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
@@ -57,14 +58,14 @@ class _AttributeTabScreenState extends State<AttributeTabScreen>
                         _sizeEntered = true;
                       });
                     },
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       labelText: 'Enter Product size',
-                      hintText: 'product size',
+                      hintText: 'example: 1kg',
                     ),
                   ),
                 ),
               ),
-              SizedBox(width: 10.0),
+              const SizedBox(width: 10.0),
               _sizeEntered == true
                   ? ElevatedButton(
                       style: ElevatedButton.styleFrom(
@@ -75,21 +76,21 @@ class _AttributeTabScreenState extends State<AttributeTabScreen>
                           _sizeList.add(_sizeController.text);
                           _sizeController.clear();
                         });
-                        print(_sizeList);
+                        mySnackBar(context, 'Size added');
                       },
-                      child: Text(
+                      child: const Text(
                         'Add',
                         style: TextStyle(color: Colors.white),
                       ),
                     )
-                  : Text(''),
+                  : const Text(''),
             ],
           ),
-          SizedBox(height: 10.0),
+          const SizedBox(height: 20.0),
           if (_sizeList.isNotEmpty)
             Padding(
               padding: const EdgeInsets.all(10.0),
-              child: Container(
+              child: SizedBox(
                 height: 50,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
@@ -115,9 +116,10 @@ class _AttributeTabScreenState extends State<AttributeTabScreen>
                             padding: const EdgeInsets.all(10.0),
                             child: Text(
                               _sizeList[index],
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold),
+                              style: const TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
                           ),
                         ),
@@ -137,7 +139,8 @@ class _AttributeTabScreenState extends State<AttributeTabScreen>
               },
               child: Text(
                 _isSave ? 'Saved' : 'Save',
-                style: TextStyle(fontWeight: FontWeight.bold, letterSpacing: 4),
+                style: const TextStyle(
+                    fontWeight: FontWeight.bold, letterSpacing: 4),
               ),
             ),
         ],

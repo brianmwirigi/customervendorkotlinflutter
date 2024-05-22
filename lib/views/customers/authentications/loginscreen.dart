@@ -90,7 +90,7 @@ class _CustomerLogInScreenState extends State<CustomerLogInScreen> {
                     },
                     decoration: const InputDecoration(
                       labelText: 'Enter Email Address',
-                      hintText: 'Email',
+                      hintText: 'example: johndoe@gmail.com',
                     ),
                   ),
                 ),
@@ -127,7 +127,7 @@ class _CustomerLogInScreenState extends State<CustomerLogInScreen> {
                         }));
                       },
                       child: const Text(
-                        'Recover Password',
+                        'Reset Password',
                         style: TextStyle(
                           color: Colors.green,
                           fontSize: 20,

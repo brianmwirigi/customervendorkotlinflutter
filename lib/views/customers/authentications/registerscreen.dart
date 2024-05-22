@@ -164,7 +164,7 @@ class _CustomerRegisterScreenState extends State<CustomerRegisterScreen> {
                     },
                     decoration: const InputDecoration(
                       labelText: 'Enter Email',
-                      hintText: 'Email',
+                      hintText: 'example: johndoe@gmail.com',
                       prefix: Icon(Icons.email),
                     ),
                   ),
@@ -184,7 +184,7 @@ class _CustomerRegisterScreenState extends State<CustomerRegisterScreen> {
                     },
                     decoration: const InputDecoration(
                       labelText: 'Enter Full Name',
-                      hintText: 'UserName',
+                      hintText: 'example: John Doe',
                       prefix: Icon(Icons.person),
                     ),
                   ),
@@ -203,7 +203,7 @@ class _CustomerRegisterScreenState extends State<CustomerRegisterScreen> {
                     },
                     decoration: const InputDecoration(
                       labelText: 'Enter Phone Number',
-                      hintText: 'Phone Number',
+                      hintText: 'example: 0712345678',
                       prefix: Icon(Icons.phone),
                     ),
                   ),

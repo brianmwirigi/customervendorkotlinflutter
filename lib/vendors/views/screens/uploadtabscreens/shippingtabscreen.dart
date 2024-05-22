@@ -33,11 +33,11 @@ class _ShippingTabScreenState extends State<ShippingTabScreen>
           onChanged: (value) {
             setState(() {
               _chargeShipping = value;
-              _productProvider.getFormData(chargeShipping: value);
+              _productProvider.getFormData(chargeShipping: _chargeShipping);
             });
           },
         ),
-        if (_chargeShipping == true)
+        _chargeShipping == true?
           Padding(
             padding: const EdgeInsets.all(10.0),
             child: TextFormField(
@@ -53,10 +53,10 @@ class _ShippingTabScreenState extends State<ShippingTabScreen>
               keyboardType: TextInputType.number,
               decoration: const InputDecoration(
                 labelText: 'Enter Shipping Fee in Kes',
-                hintText: '500',
+                hintText: 'example: 500',
               ),
             ),
-          ),
+          ): const SizedBox(),
       ],
     );
   }
