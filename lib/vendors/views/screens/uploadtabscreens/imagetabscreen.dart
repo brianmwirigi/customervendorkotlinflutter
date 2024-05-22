@@ -99,7 +99,6 @@ class _ImagesTabScreenState extends State<ImagesTabScreen>
                   await productImageReference.getDownloadURL().then((value) {
                     setState(() {
                       _isSave = true;
-                      _productImageUrlList.add(value);
                     });
                   });
                 });

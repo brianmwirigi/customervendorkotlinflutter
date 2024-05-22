@@ -41,12 +41,6 @@ class _ShippingTabScreenState extends State<ShippingTabScreen>
           Padding(
             padding: const EdgeInsets.all(10.0),
             child: TextFormField(
-              validator: (value) {
-                if (value!.isEmpty) {
-                  return 'Please enter Shipping Fee in Kes';
-                }
-                return null;
-              },
               onChanged: (value) {
                 _productProvider.getFormData(shippingFee: int.parse(value));
               },

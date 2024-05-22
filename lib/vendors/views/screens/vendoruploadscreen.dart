@@ -16,6 +16,7 @@ class VendorUploadScreen extends StatelessWidget {
 
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
+  @override
   Widget build(BuildContext context) {
     final ProductProvider _productProvider =
         Provider.of<ProductProvider>(context);
@@ -71,7 +72,7 @@ class VendorUploadScreen extends StatelessWidget {
                 if (_formKey.currentState!.validate()) {
                   //upload product data to firestore
 
-                  final productId = Uuid().v4();
+                  final productId = const Uuid().v4();
                   await _firestore
                       .collection('VendorProducts')
                       .doc(productId)
@@ -98,21 +99,15 @@ class VendorUploadScreen extends StatelessWidget {
                     'productImageUrlList':
                         _productProvider.productData['productImageUrlList'],
                   }).whenComplete(() {
+                    _productProvider.clearData();
+                    _formKey.currentState!.reset();
                     EasyLoading.dismiss();
                     mySnackBar(context, 'Product Uploaded');
-                    _formKey.currentState!.reset();
-                    _productProvider.clearData();
-                    Navigator.push(context,
+                    Navigator.pushReplacement(context,
                         MaterialPageRoute(builder: (context) {
                       return const MainVendorScreen();
                     }));
                   });
-                } else {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(
-                      content: Text('Please fill all the fields'),
-                    ),
-                  );
                 }
               },
               child: const Text(
