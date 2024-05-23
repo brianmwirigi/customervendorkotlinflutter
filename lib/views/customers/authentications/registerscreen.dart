@@ -49,7 +49,7 @@ class _CustomerRegisterScreenState extends State<CustomerRegisterScreen> {
         });
       });
       if (response == 'successful') {
-        mySnackBar(context, 'Account created successfully');
+        mySnackBar(context, 'Account created successfully' );
         Navigator.pushReplacement(context,
             MaterialPageRoute(builder: (BuildContext context) {
           return const MainCustomerScreen();

@@ -1,9 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:customervendorkotlinflutter/views/customers/authentications/loginscreen.dart';
+import 'package:customervendorkotlinflutter/views/customers/innerscreens/customereditprofilescreen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class AccountScreen extends StatelessWidget {
-  const AccountScreen({super.key});
+  final FirebaeAuthInstance = FirebaseAuth.instance;
 
   @override
   Widget build(BuildContext context) {
@@ -24,10 +26,17 @@ class AccountScreen extends StatelessWidget {
               snapshot.data!.data() as Map<String, dynamic>;
           return Scaffold(
             appBar: AppBar(
+              automaticallyImplyLeading: false,
               elevation: 5,
-              title: const Text(
-                'Profile Account',
-                style: TextStyle(color: Colors.green, letterSpacing: 4),
+              title: const Center(
+                child: Text(
+                  'PROFILE DETAILS',
+                  style: TextStyle(
+                      color: Colors.green,
+                      letterSpacing: 2,
+                      fontSize: 30,
+                      fontWeight: FontWeight.bold),
+                ),
               ),
               centerTitle: true,
               actions: [
@@ -81,7 +90,37 @@ class AccountScreen extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(
-                  height: 20,
+                  height: 10,
+                ),
+                InkWell(
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) {
+                      return CustomerEditProfileScreen(customerData: data);
+                    }));
+                  },
+                  child: Container(
+                    height: 50,
+                    width: MediaQuery.of(context).size.width - 200,
+                    decoration: BoxDecoration(
+                      color: Colors.green,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: const Center(
+                      child: Text(
+                        'Edit Profile',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          letterSpacing: 5,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  height: 10,
                 ),
                 const Padding(
                   padding: EdgeInsets.all(10.0),
@@ -91,10 +130,10 @@ class AccountScreen extends StatelessWidget {
                     thickness: 4,
                     indent: 20,
                     endIndent: 20,
-                  )  ,
+                  ),
                 ),
                 const SizedBox(
-                  height: 20,
+                  height: 10,
                 ),
                 ListTile(
                   title: const Text(
@@ -131,7 +170,12 @@ class AccountScreen extends StatelessWidget {
                   ),
                   leading: const Icon(Icons.logout),
                   onTap: () async {
-                    await FirebaseAuth.instance.signOut();
+                    await FirebaseAuth.instance.signOut().whenComplete(() {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+                        return CustomerLogInScreen();
+                      }));
+                    });
                   },
                 ),
               ],

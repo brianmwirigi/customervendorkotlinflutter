@@ -12,7 +12,9 @@ class HomeProductWidget extends StatelessWidget {
     final Stream<QuerySnapshot> _productStream = FirebaseFirestore.instance
         .collection('VendorProducts')
         .where('productCategory', isEqualTo: categoryName)
+        .where('approve', isEqualTo: true)
         .snapshots();
+
     return StreamBuilder<QuerySnapshot>(
       stream: _productStream,
       builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
@@ -20,9 +22,14 @@ class HomeProductWidget extends StatelessWidget {
           return const Text('Something went wrong');
         }
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return const  LinearProgressIndicator(
+          return const LinearProgressIndicator(
             color: Colors.green,
           );
+        }
+        if (snapshot.data!.docs.isEmpty) {
+          // If the product stream is empty, display a message
+          return const Center(
+              child: Text('No products found in this category'));
         }
         return Container(
           height: 250,

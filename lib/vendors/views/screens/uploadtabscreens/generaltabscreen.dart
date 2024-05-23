@@ -92,17 +92,16 @@ class _GeneralTabScreenState extends State<GeneralTabScreen>
             TextFormField(
               validator: (value) {
                 if (value!.isEmpty) {
-                  return 'Please enter Product Quantity in gram\'s';
+                  return 'Please enter Product Quantity';
                 }
                 return null;
               },
               onChanged: (value) {
-                _productProvider.getFormData(
-                    productQuantity: int.parse(value));
+                _productProvider.getFormData(productQuantity: int.parse(value));
               },
               decoration: const InputDecoration(
-                labelText: 'Enter Product Quantity in gram\'s',
-                hintText: 'example: 10000',
+                labelText: 'Enter Product Quantity',
+                hintText: 'example: 50',
               ),
             ),
             const SizedBox(
@@ -142,7 +141,7 @@ class _GeneralTabScreenState extends State<GeneralTabScreen>
                 _productProvider.getFormData(productDescription: value);
               },
               minLines: 3,
-              maxLines: 5,
+              maxLines: 10,
               maxLength: 500,
               decoration: InputDecoration(
                 border: OutlineInputBorder(
@@ -181,6 +180,8 @@ class _GeneralTabScreenState extends State<GeneralTabScreen>
                     ),
                   ),
                 ),
+                if (_productProvider.productData['productScheduleDate'] == null)
+                  const Text('No Date Scheduled!'),
                 if (_productProvider.productData['productScheduleDate'] != null)
                   Text(
                     formattedDate(

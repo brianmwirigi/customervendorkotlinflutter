@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 
-mySnackBar(context, String title) {
-  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+ mySnackBar(BuildContext context, String title) {
+  return SnackBar(
     backgroundColor: Colors.green,
+    behavior: SnackBarBehavior.floating,
     content: Text(
       title,
       style: const TextStyle(
@@ -11,6 +12,6 @@ mySnackBar(context, String title) {
           fontWeight: FontWeight.bold,
           letterSpacing: 2),
     ),
-    duration: const Duration(seconds: 10),
-  ));
+    duration: const Duration(seconds: 2),
+  );
 }

@@ -45,16 +45,22 @@ class _CustomerLogInScreenState extends State<CustomerLogInScreen> {
           return const MainCustomerScreen();
         }));
       } else if (response == 'user-notfound') {
-        return mySnackBar(context, response);
+        ScaffoldMessenger.of(context)
+            .showSnackBar(mySnackBar(context, response));
       } else if (response == 'wrong-password') {
-        return mySnackBar(context, response);
+        ScaffoldMessenger.of(context)
+            .showSnackBar(mySnackBar(context, response));
       } else {
         setState(() {
           _isLoading = false;
-          return mySnackBar(context, response);
+          ScaffoldMessenger.of(context)
+              .showSnackBar(mySnackBar(context, response));
         });
       }
-      return mySnackBar(context, 'Please fill all the fields');
+    } else {
+      _isLoading = false;
+      ScaffoldMessenger.of(context)
+          .showSnackBar(mySnackBar(context, 'Please fill all the fields'));
     }
   }
 

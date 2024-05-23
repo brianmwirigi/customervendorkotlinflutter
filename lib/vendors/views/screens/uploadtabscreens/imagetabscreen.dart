@@ -89,25 +89,37 @@ class _ImagesTabScreenState extends State<ImagesTabScreen>
             onPressed: () async {
               EasyLoading.show(status: 'Saving Images');
               //code to upload images to firebase storage
-              for (var img in _productImage) {
-                Reference productImageReference = _storage
-                    .ref()
-                    .child('ProductImages')
-                    .child(const Uuid().v4());
+              List<Future> uploadTasks = [];
+              try {
+                for (var img in _productImage) {
+                  Reference productImageReference = _storage
+                      .ref()
+                      .child('ProductImages')
+                      .child(const Uuid().v4());
 
-                await productImageReference.putFile(img).whenComplete(() async {
-                  await productImageReference.getDownloadURL().then((value) {
-                    setState(() {
-                      _isSave = true;
-                    });
+                  var productUploadTask =
+                      productImageReference.putFile(img).then((_) async {
+                    var downloadurl = await productImageReference.getDownloadURL();
+
+                    _productImageUrlList.add(downloadurl);
                   });
+
+                  uploadTasks.add(productUploadTask);
+                }
+                await Future.wait(uploadTasks);
+
+                setState(() {
+                  _productProvider.getFormData(
+                      productImageUrlList: _productImageUrlList);
+                  _isSave = true;
+                  EasyLoading.dismiss();
                 });
-              }
-              setState(() {
-                _productProvider.getFormData(
-                    productImageUrlList: _productImageUrlList);
+              } catch (e) {
                 EasyLoading.dismiss();
-              });
+                EasyLoading.showError(e.toString());
+              } finally {
+                EasyLoading.dismiss();
+              }
             },
             child: _productImage.isNotEmpty
                 ? Text(

@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:customervendorkotlinflutter/views/customers/navigationscreens/categoryscreen.dart';
 import 'package:customervendorkotlinflutter/views/customers/navigationscreens/widgets/homeproductwidget.dart';
 import 'package:customervendorkotlinflutter/views/customers/navigationscreens/widgets/mainproductwidget.dart';
 import 'package:flutter/material.dart';
@@ -106,7 +107,12 @@ class _CategoryTextWidgetState extends State<CategoryTextWidget> {
                       ),
                     ),
                     IconButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) {
+                          return const CategoryScreen();
+                        }));
+                      },
                       icon: const Center(
                         child: Icon(Icons.arrow_forward, size: 30),
                       ),

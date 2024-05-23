@@ -6,6 +6,7 @@ import 'package:customervendorkotlinflutter/vendors/views/screens/uploadtabscree
 import 'package:customervendorkotlinflutter/vendors/views/screens/uploadtabscreens/generaltabscreen.dart';
 import 'package:customervendorkotlinflutter/vendors/views/screens/uploadtabscreens/imagetabscreen.dart';
 import 'package:customervendorkotlinflutter/vendors/views/screens/uploadtabscreens/shippingtabscreen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:provider/provider.dart';
@@ -71,32 +72,38 @@ class VendorUploadScreen extends StatelessWidget {
                 if (_formKey.currentState!.validate()) {
                   //upload product data to firestore
                   final productId = const Uuid().v4();
-                  await _firestore
-                      .collection('VendorProducts')
-                      .doc(productId)
-                      .set({
-                    'productId': productId,
-                    'productName': _productProvider.productData['productName'],
-                    'productPrice':
-                        _productProvider.productData['productPrice'],
-                    'productQuantity':
-                        _productProvider.productData['productQuantity'],
-                    'productCategory':
-                        _productProvider.productData['productCategory'],
-                    'productDescription':
-                        _productProvider.productData['productDescription'],
-                    'productScheduleDate':
-                        _productProvider.productData['productScheduleDate'],
-                    'chargeShipping':
-                        _productProvider.productData['chargeShipping'],
-                    'shippingFee': _productProvider.productData['shippingFee'],
-                    'productNutritionValue':
-                        _productProvider.productData['productNutritionValue'],
-                    'productSizeList':
-                        _productProvider.productData['productSizeList'],
-                    'productImageUrlList':
-                        _productProvider.productData['productImageUrlList'],
-                  }).then((value) {
+
+                  try {
+                    await _firestore
+                        .collection('VendorProducts')
+                        .doc(productId)
+                        .set({
+                      'productId': productId,
+                      'productName':
+                          _productProvider.productData['productName'],
+                      'productPrice':
+                          _productProvider.productData['productPrice'],
+                      'productQuantity':
+                          _productProvider.productData['productQuantity'],
+                      'productCategory':
+                          _productProvider.productData['productCategory'],
+                      'productDescription':
+                          _productProvider.productData['productDescription'],
+                      'productScheduleDate':
+                          _productProvider.productData['productScheduleDate'],
+                      'chargeShipping':
+                          _productProvider.productData['chargeShipping'],
+                      'shippingFee':
+                          _productProvider.productData['shippingFee'],
+                      'productNutritionValue':
+                          _productProvider.productData['productNutritionValue'],
+                      'productSizeList':
+                          _productProvider.productData['productSizeList'],
+                      'productImageUrlList':
+                          _productProvider.productData['productImageUrlList'],
+                      'vendorId': FirebaseAuth.instance.currentUser!.uid,
+                      'approve': false,
+                    });
                     _productProvider.clearData();
                     _formKey.currentState!.reset();
                     EasyLoading.dismiss();
@@ -105,10 +112,10 @@ class VendorUploadScreen extends StatelessWidget {
                         MaterialPageRoute(builder: (context) {
                       return const MainVendorScreen();
                     }));
-                  }).catchError((error) {
+                  } catch (e) {
                     EasyLoading.dismiss();
-                    mySnackBar(context, error.toString());
-                  });
+                    mySnackBar(context, ' Error saving product $e');
+                  }
                 } else {
                   mySnackBar(context, 'Please fill all the fields');
                 }
