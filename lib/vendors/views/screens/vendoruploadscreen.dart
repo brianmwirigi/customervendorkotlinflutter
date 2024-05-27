@@ -115,6 +115,11 @@ class VendorUploadScreen extends StatelessWidget {
                   } catch (e) {
                     EasyLoading.dismiss();
                     mySnackBar(context, ' Error saving product $e');
+                    _formKey.currentState!.reset();
+                    Navigator.pushReplacement(context,
+                        MaterialPageRoute(builder: (context) {
+                      return const MainVendorScreen();
+                    }));
                   }
                 } else {
                   mySnackBar(context, 'Please fill all the fields');

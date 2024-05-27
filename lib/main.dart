@@ -50,8 +50,8 @@ class MyApp extends StatelessWidget {
       ),
       home: currentUser == null
           ?
-      VendorAuthenticationScreen() : MainVendorScreen(),
-     //CustomerLogInScreen() : MainCustomerScreen(),
+      //VendorAuthenticationScreen() : MainVendorScreen(),
+     CustomerLogInScreen() : MainCustomerScreen(),
 
 
       builder: EasyLoading.init(),

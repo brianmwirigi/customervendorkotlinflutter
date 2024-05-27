@@ -57,8 +57,8 @@ class _MainVendorScreenState extends State<MainVendorScreen> {
             label: 'ORDERS',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: 'ACCOUNT',
+            icon: Icon(Icons.logout),
+            label: 'LOGOUT',
           ),
         ],
       ),

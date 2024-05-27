@@ -234,7 +234,7 @@ class _ProductCheckoutScreenState extends State<ProductCheckoutScreen> {
                                   'productSize': item.productSize,
                                   'scheduleDate': item.scheduleDate,
                                   'orderDate': Timestamp.now(),
-                                  'orderStatus': 'Pending',
+                                  'orderStatus': false,
                                 }).whenComplete(() {
                                   setState(() {
                                     _customerCartProvider.getCartItem.clear();
