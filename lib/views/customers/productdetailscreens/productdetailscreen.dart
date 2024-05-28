@@ -35,6 +35,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 10,
+
         iconTheme: const IconThemeData(
           color: Colors.green,
         ),

@@ -22,6 +22,15 @@ class ProductCategoryScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         elevation: 5,
+        leading: IconButton(
+          icon: const Icon(
+            Icons.arrow_back,
+            color: Colors.white,
+          ),
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+        ),
         backgroundColor: Colors.green,
         title: Text(
           categoryData['categoryName'].toUpperCase(),

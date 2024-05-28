@@ -48,12 +48,10 @@ class MyApp extends StatelessWidget {
         primaryColor: Colors.green,
         fontFamily: 'Taviraj-semiBold',
       ),
-      home: currentUser == null
-          ?
-      VendorAuthenticationScreen() : MainVendorScreen(),
-    //CustomerLogInScreen() : MainCustomerScreen(),
-
-
+      home: //VendorAuthenticationScreen(),
+          //MainVendorScreen(),
+          // MainCustomerScreen(),
+          CustomerLogInScreen(),
       builder: EasyLoading.init(),
     );
   }

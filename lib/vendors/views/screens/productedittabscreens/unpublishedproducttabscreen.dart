@@ -22,13 +22,20 @@ class UnPublishProductTabScreen extends StatelessWidget {
             return const Text('Something went wrong');
           }
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return const LinearProgressIndicator(
-              color: Colors.green,
+            return const  Center(
+              child:  CircularProgressIndicator(
+                color: Colors.green,
+              ),
             );
           }
           if (snapshot.data!.docs.isEmpty) {
             // If the product stream is empty, display a message
-            return const Center(child: Text('No products found'));
+            return const Center(
+                child: Text('No Unpublished Products found!',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20,
+                    )));
           }
           return Container(
             child: ListView.builder(

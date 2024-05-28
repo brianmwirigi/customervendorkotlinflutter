@@ -1,6 +1,7 @@
 import 'dart:typed_data';
 import 'package:customervendorkotlinflutter/controllers/authenticationcontroller.dart';
 import 'package:customervendorkotlinflutter/utilities/showsnackbar.dart';
+import 'package:customervendorkotlinflutter/vendors/views/authentications/vendorauthenticationscreen.dart';
 import 'package:customervendorkotlinflutter/views/customers/authentications/loginscreen.dart';
 import 'package:customervendorkotlinflutter/views/customers/maincustomerscreen.dart';
 import 'package:flutter/cupertino.dart';
@@ -49,7 +50,7 @@ class _CustomerRegisterScreenState extends State<CustomerRegisterScreen> {
         });
       });
       if (response == 'successful') {
-        mySnackBar(context, 'Account created successfully' );
+        mySnackBar(context, 'Account created successfully');
         Navigator.pushReplacement(context,
             MaterialPageRoute(builder: (BuildContext context) {
           return const MainCustomerScreen();
@@ -281,6 +282,28 @@ class _CustomerRegisterScreenState extends State<CustomerRegisterScreen> {
                         'LogIn',
                         style: TextStyle(
                           color: Colors.green,
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Text('Are you a Vendor?'),
+                    TextButton(
+                      onPressed: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) {
+                          return VendorAuthenticationScreen();
+                        }));
+                      },
+                      child: const Text(
+                        'Create Vendor Account',
+                        style: TextStyle(
+                          color: Colors.blue,
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
                         ),

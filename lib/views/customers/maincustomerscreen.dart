@@ -22,7 +22,7 @@ class _MainCustomerScreenState extends State<MainCustomerScreen> {
     const CategoryScreen(),
     const StoreScreen(),
     const CartScreen(),
-    const SearchScreen(),
+    SearchScreen(),
     AccountScreen()
   ];
 

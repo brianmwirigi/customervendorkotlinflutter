@@ -19,16 +19,26 @@ class PublishedProductTabScreen extends StatelessWidget {
         stream: _vendorProductStream,
         builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
           if (snapshot.hasError) {
-            return const Text('Something went wrong');
+            return const Center(child: Text('Something went wrong'));
           }
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return const LinearProgressIndicator(
-              color: Colors.green,
+            return const Center(
+              child: CircularProgressIndicator(
+                color: Colors.green,
+              ),
             );
           }
           if (snapshot.data!.docs.isEmpty) {
             // If the product stream is empty, display a message
-            return const Center(child: Text('No products found'));
+            return const Center(
+                child: Text(
+              'No Published Products found!',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 20,
+              ),
+              textAlign: TextAlign.center,
+            ));
           }
           return Container(
             child: ListView.builder(

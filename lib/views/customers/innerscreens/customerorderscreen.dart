@@ -20,10 +20,20 @@ class CustomerOrderScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         elevation: 5,
+        leading: IconButton(
+          icon: const Icon(
+            Icons.arrow_back,
+            color: Colors.white,
+          ),
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+        ),
+        backgroundColor: Colors.green,
         title: const Text(
           'ORDERS',
           style: TextStyle(
-            color: Colors.green,
+            color: Colors.white,
             letterSpacing: 2,
             fontSize: 30,
             fontWeight: FontWeight.bold,
@@ -72,7 +82,10 @@ class CustomerOrderScreen extends StatelessWidget {
                               style: TextStyle(color: Colors.red),
                             ),
                       trailing: Text(
-                        'Amount: kes ' + document['productPrice'].toString(),
+                        'Amount: kes ' +
+                            (document['productPrice'] *
+                                    document['productQuantity'])
+                                .toString(),
                         style: TextStyle(color: Colors.blue),
                       ),
                       subtitle: Text(

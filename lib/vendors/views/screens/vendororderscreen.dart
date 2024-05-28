@@ -105,7 +105,10 @@ class VendorOrderScreen extends StatelessWidget {
                               style: TextStyle(color: Colors.red),
                             ),
                       trailing: Text(
-                        'Amount: kes ' + document['productPrice'].toString(),
+                        'Amount: kes ' +
+                            (document['productPrice'] *
+                                    document['productQuantity'])
+                                .toString(),
                         style: TextStyle(color: Colors.blue),
                       ),
                       subtitle: Text(

@@ -97,7 +97,7 @@ class _ProductCheckoutScreenState extends State<ProductCheckoutScreen> {
                                             Text(
                                               cartData.productName,
                                               style:
-                                                  const TextStyle(fontSize: 20),
+                                                  const TextStyle(fontWeight: FontWeight.bold,),
                                             ),
                                           ],
                                         ),
@@ -115,7 +115,7 @@ class _ProductCheckoutScreenState extends State<ProductCheckoutScreen> {
                                               cartData.productCategory
                                                   .toString(),
                                               style:
-                                                  const TextStyle(fontSize: 20),
+                                                  const TextStyle(fontWeight: FontWeight.bold,),
                                             ),
                                           ],
                                         ),
@@ -132,7 +132,7 @@ class _ProductCheckoutScreenState extends State<ProductCheckoutScreen> {
                                             Text(
                                               'kes ${cartData.productPrice.toStringAsFixed(0)}',
                                               style:
-                                                  const TextStyle(fontSize: 20),
+                                                  const TextStyle(fontWeight: FontWeight.bold,),
                                             ),
                                           ],
                                         ),
@@ -157,7 +157,7 @@ class _ProductCheckoutScreenState extends State<ProductCheckoutScreen> {
                                               Text(
                                                 cartData.productSize.toString(),
                                                 style: const TextStyle(
-                                                    fontSize: 20),
+                                                  fontWeight: FontWeight.bold,),
                                               ),
                                             ],
                                           ),

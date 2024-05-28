@@ -1,11 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:customervendorkotlinflutter/vendors/views/screens/vendorinnerscreens/vendotwithdrawalscreen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class EarningScreen extends StatelessWidget {
   const EarningScreen({super.key});
-
 
   @override
   Widget build(BuildContext context) {
@@ -76,7 +76,7 @@ class EarningScreen extends StatelessWidget {
                 }
                 return Center(
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       Container(
                         height: 150,
@@ -116,9 +116,6 @@ class EarningScreen extends StatelessWidget {
                           ],
                         ),
                       ),
-                      const SizedBox(
-                        height: 20,
-                      ),
                       Container(
                         height: 150,
                         width: MediaQuery.of(context).size.width - 100,
@@ -157,6 +154,37 @@ class EarningScreen extends StatelessWidget {
                           ],
                         ),
                       ),
+                      InkWell(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) {
+                                    return  VendorWithdrawalScreen();}));
+                        },
+                        child: Container(
+                            height: 50,
+                            width: MediaQuery.of(context).size.width - 50,
+                            decoration: BoxDecoration(
+                              color: Colors.green,
+                              borderRadius: BorderRadius.circular(20),
+                              border: Border.all(
+                                color: Colors.red,
+                                width: 2,
+                              ),
+                            ),
+                            child: const Center(
+                              child: Text(
+                                'WITHDRAW',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 20,
+                                  letterSpacing: 5,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            )),
+                      )
                     ],
                   ),
                 );

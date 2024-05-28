@@ -54,6 +54,7 @@ class _GeneralTabScreenState extends State<GeneralTabScreen>
         child: Column(
           children: [
             TextFormField(
+              keyboardType: TextInputType.text,
               validator: (value) {
                 if (value!.isEmpty) {
                   return 'Please enter Product name';
@@ -72,6 +73,7 @@ class _GeneralTabScreenState extends State<GeneralTabScreen>
               height: 30,
             ),
             TextFormField(
+              keyboardType: TextInputType.number,
               validator: (value) {
                 if (value!.isEmpty) {
                   return 'Please enter Product Price in kes';
@@ -90,6 +92,7 @@ class _GeneralTabScreenState extends State<GeneralTabScreen>
               height: 30,
             ),
             TextFormField(
+              keyboardType: TextInputType.number,
               validator: (value) {
                 if (value!.isEmpty) {
                   return 'Please enter Product Quantity';
@@ -131,6 +134,7 @@ class _GeneralTabScreenState extends State<GeneralTabScreen>
               height: 30,
             ),
             TextFormField(
+              keyboardType: TextInputType.text,
               validator: (value) {
                 if (value!.isEmpty) {
                   return 'Please enter Product Description';

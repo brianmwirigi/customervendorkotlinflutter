@@ -21,6 +21,9 @@ class _CartScreenState extends State<CartScreen> {
       appBar: AppBar(
         backgroundColor: Colors.green,
         elevation: 0,
+        iconTheme: const IconThemeData(
+          color: Colors.white,
+        ),
         title: const Center(
           child: Text(
             'CARTS',
@@ -99,7 +102,7 @@ class _CartScreenState extends State<CartScreen> {
                                         ),
                                         Text(
                                           cartData.productName,
-                                          style: const TextStyle(fontSize: 20),
+                                          style: const TextStyle(fontWeight: FontWeight.bold,),
                                         ),
                                       ],
                                     ),
@@ -114,7 +117,7 @@ class _CartScreenState extends State<CartScreen> {
                                         ),
                                         Text(
                                           cartData.productCategory.toString(),
-                                          style: const TextStyle(fontSize: 20),
+                                          style: const TextStyle(fontWeight: FontWeight.bold,),
                                         ),
                                       ],
                                     ),
@@ -129,7 +132,7 @@ class _CartScreenState extends State<CartScreen> {
                                         ),
                                         Text(
                                           'kes ${cartData.productPrice.toStringAsFixed(0)}',
-                                          style: const TextStyle(fontSize: 20),
+                                          style: const TextStyle(fontWeight: FontWeight.bold,),
                                         ),
                                       ],
                                     ),
@@ -153,7 +156,7 @@ class _CartScreenState extends State<CartScreen> {
                                           Text(
                                             cartData.productSize.toString(),
                                             style:
-                                                const TextStyle(fontSize: 20),
+                                                const TextStyle(fontWeight: FontWeight.bold,),
                                           ),
                                         ],
                                       ),
