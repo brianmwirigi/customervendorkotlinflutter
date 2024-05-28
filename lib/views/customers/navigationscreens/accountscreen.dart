@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:customervendorkotlinflutter/views/customers/authentications/loginscreen.dart';
 import 'package:customervendorkotlinflutter/views/customers/innerscreens/customereditprofilescreen.dart';
+import 'package:customervendorkotlinflutter/views/customers/innerscreens/customerorderscreen.dart';
+import 'package:customervendorkotlinflutter/views/customers/navigationscreens/cartscreen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -10,7 +12,7 @@ class AccountScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     CollectionReference users =
-        FirebaseFirestore.instance.collection('Customers');
+    FirebaseFirestore.instance.collection('Customers');
     return FutureBuilder<DocumentSnapshot>(
       future: users.doc(FirebaseAuth.instance.currentUser!.uid).get(),
       builder:
@@ -23,7 +25,7 @@ class AccountScreen extends StatelessWidget {
         }
         if (snapshot.connectionState == ConnectionState.done) {
           Map<String, dynamic> data =
-              snapshot.data!.data() as Map<String, dynamic>;
+          snapshot.data!.data() as Map<String, dynamic>;
           return Scaffold(
             appBar: AppBar(
               automaticallyImplyLeading: false,
@@ -96,12 +98,15 @@ class AccountScreen extends StatelessWidget {
                   onTap: () {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) {
-                      return CustomerEditProfileScreen(customerData: data);
-                    }));
+                          return CustomerEditProfileScreen(customerData: data);
+                        }));
                   },
                   child: Container(
                     height: 50,
-                    width: MediaQuery.of(context).size.width - 200,
+                    width: MediaQuery
+                        .of(context)
+                        .size
+                        .width - 200,
                     decoration: BoxDecoration(
                       color: Colors.green,
                       borderRadius: BorderRadius.circular(10),
@@ -154,14 +159,24 @@ class AccountScreen extends StatelessWidget {
                     'Shopping Cart',
                   ),
                   leading: const Icon(Icons.shopping_cart_outlined),
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) {
+                          return const CartScreen();
+                        }));
+                  },
                 ),
                 ListTile(
                   title: const Text(
                     'Orders',
                   ),
                   leading: const Icon(Icons.shopping_bag_outlined),
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) {
+                          return CustomerOrderScreen();
+                        }));
+                  },
                 ),
                 ListTile(
                   title: const Text(
@@ -173,8 +188,8 @@ class AccountScreen extends StatelessWidget {
                     await FirebaseAuth.instance.signOut().whenComplete(() {
                       Navigator.push(context,
                           MaterialPageRoute(builder: (context) {
-                        return CustomerLogInScreen();
-                      }));
+                            return CustomerLogInScreen();
+                          }));
                     });
                   },
                 ),

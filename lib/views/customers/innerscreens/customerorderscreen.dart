@@ -1,10 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:intl/intl.dart';
 
-class VendorOrderScreen extends StatelessWidget {
+class CustomerOrderScreen extends StatelessWidget {
   String formattedDate(date) {
     final outputFormatDate = DateFormat('dd/MM/yyyy');
     final outputDate = outputFormatDate.format(date.toDate());
@@ -12,13 +11,11 @@ class VendorOrderScreen extends StatelessWidget {
     return outputDate;
   }
 
-  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
-
   @override
   Widget build(BuildContext context) {
     final Stream<QuerySnapshot> _orderStream = FirebaseFirestore.instance
         .collection('CustomerOrders')
-        .where('vendorId', isEqualTo: FirebaseAuth.instance.currentUser!.uid)
+        .where('customerId', isEqualTo: FirebaseAuth.instance.currentUser!.uid)
         .snapshots();
     return Scaffold(
       appBar: AppBar(
@@ -47,39 +44,9 @@ class VendorOrderScreen extends StatelessWidget {
             ));
           }
           return ListView(
-            children: snapshot.data!.docs.map((DocumentSnapshot document) {
-              return Slidable(
-                startActionPane: ActionPane(
-                  motion: const ScrollMotion(),
-                  children: [
-                    SlidableAction(
-                      flex: 2,
-                      onPressed: (context) async {
-                        await _firestore
-                            .collection('CustomerOrders')
-                            .doc(document['orderId'])
-                            .update({'orderStatus': true});
-                      },
-                      backgroundColor: Colors.green,
-                      foregroundColor: Colors.white,
-                      icon: Icons.approval_sharp,
-                      label: 'ACCEPT',
-                    ),
-                    SlidableAction(
-                      onPressed: (context) async {
-                        await _firestore
-                            .collection('CustomerOrders')
-                            .doc(document['orderId'])
-                            .update({'orderStatus': false});
-                      },
-                      backgroundColor: Colors.red,
-                      foregroundColor: Colors.white,
-                      icon: Icons.delete,
-                      label: 'REJECT',
-                    ),
-                  ],
-                ),
-                child: Column(
+            children: snapshot.data!.docs.map(
+              (DocumentSnapshot document) {
+                return Column(
                   children: [
                     ListTile(
                       leading: document['orderStatus'] == true
@@ -256,9 +223,9 @@ class VendorOrderScreen extends StatelessWidget {
                       color: Colors.green,
                     ),
                   ],
-                ),
-              );
-            }).toList(),
+                );
+              },
+            ).toList(),
           );
         },
       ),

@@ -14,6 +14,7 @@ class EarningScreen extends StatelessWidget {
     final Stream<QuerySnapshot> _orderStream = FirebaseFirestore.instance
         .collection('CustomerOrders')
         .where('vendorId', isEqualTo: FirebaseAuth.instance.currentUser!.uid)
+        .where('orderStatus', isEqualTo: true)
         .snapshots();
 
     return FutureBuilder<DocumentSnapshot>(

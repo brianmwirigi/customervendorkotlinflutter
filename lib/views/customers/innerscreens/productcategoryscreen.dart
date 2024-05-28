@@ -10,17 +10,15 @@ class ProductCategoryScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     final Stream<QuerySnapshot> _productCategoryStream =
-        FirebaseFirestore.instance
-            .collection('VendorProducts')
-            .where(
-              'productCategory',
-              isEqualTo: categoryData['categoryName'].where(
-                'approve',
-                isEqualTo: true,
-              ),
-            )
-            .snapshots();
+    FirebaseFirestore.instance
+        .collection('VendorProducts')
+        .where('productCategory', isEqualTo: categoryData['categoryName'])
+        .where('approve', isEqualTo: true)
+        .snapshots();
+
+
     return Scaffold(
       appBar: AppBar(
         elevation: 5,
