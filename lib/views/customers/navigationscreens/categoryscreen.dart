@@ -14,7 +14,7 @@ class CategoryScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         elevation: 5,
-
+        automaticallyImplyLeading: false,
         backgroundColor: Colors.green,
         title: const Text('CATEGORIES',
             style: TextStyle(

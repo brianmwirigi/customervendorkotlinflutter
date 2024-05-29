@@ -27,6 +27,7 @@ class VendorUploadScreen extends StatelessWidget {
         key: _formKey,
         child: Scaffold(
           appBar: AppBar(
+            automaticallyImplyLeading: false,
             elevation: 20,
             backgroundColor: Colors.white,
             title: const Text(

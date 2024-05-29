@@ -13,6 +13,7 @@ class StoreScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         elevation: 5,
+        automaticallyImplyLeading: false,
         backgroundColor: Colors.green,
         title: const Text('STORES',
             style: TextStyle(

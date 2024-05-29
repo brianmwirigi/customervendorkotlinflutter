@@ -19,6 +19,7 @@ class _CartScreenState extends State<CartScreen> {
         Provider.of<CustomerCartProvider>(context);
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         backgroundColor: Colors.green,
         elevation: 0,
         iconTheme: const IconThemeData(

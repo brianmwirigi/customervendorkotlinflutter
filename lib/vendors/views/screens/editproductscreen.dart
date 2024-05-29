@@ -11,6 +11,7 @@ class EditProductScreen extends StatelessWidget {
       length: 2,
       child: Scaffold(
         appBar: AppBar(
+          automaticallyImplyLeading: false,
           elevation: 5,
           title: const Text(
             'MANAGE PRODUCTS',

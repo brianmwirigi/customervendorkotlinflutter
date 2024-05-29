@@ -35,6 +35,7 @@ class EarningScreen extends StatelessWidget {
               snapshot.data!.data() as Map<String, dynamic>;
           return Scaffold(
             appBar: AppBar(
+              automaticallyImplyLeading: false,
               elevation: 5,
               title: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,

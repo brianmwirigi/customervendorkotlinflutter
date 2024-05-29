@@ -6,7 +6,7 @@ class SearchScreen extends StatefulWidget {
   @override
   State<SearchScreen> createState() => _SearchScreenState();
 }
-
+  
 class _SearchScreenState extends State<SearchScreen> {
   String _searchedValue = '';
 
@@ -18,6 +18,7 @@ class _SearchScreenState extends State<SearchScreen> {
         .snapshots();
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         elevation: 5,
         backgroundColor: Colors.green,
         title: const Text('SEARCH',

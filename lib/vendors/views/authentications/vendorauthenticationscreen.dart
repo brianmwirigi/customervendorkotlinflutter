@@ -4,7 +4,6 @@ import 'package:customervendorkotlinflutter/views/customers/authentications/regi
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart' hide EmailAuthProvider;
 import 'package:firebase_ui_auth/firebase_ui_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 
 class VendorAuthenticationScreen extends StatelessWidget {
   const VendorAuthenticationScreen({super.key});
@@ -13,36 +12,44 @@ class VendorAuthenticationScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return StreamBuilder<User?>(
       stream: FirebaseAuth.instance.authStateChanges(),
+      // If the user is already signed-in, use it as initial data
       initialData: FirebaseAuth.instance.currentUser,
-      builder: (BuildContext context, AsyncSnapshot<User?> snapshot) {
+      builder: (context, snapshot) {
+        // User is not signed in
         if (!snapshot.hasData) {
           return SignInScreen(
-            providers: [
-              EmailAuthProvider(),
-            ],
-          );
-        }
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Text('Are you a Customer?'),
-            TextButton(
-              onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return CustomerRegisterScreen();
-                }));
+              subtitleBuilder: (context, action) {
+                return Row(
+                  children: [
+                    TextButton(
+                      onPressed: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) {
+                          return CustomerRegisterScreen();
+                        }));
+                      },
+                      child: const Row(
+                        children: [
+                          Text(
+                            'Need A Customer Account?  ',
+                          ),
+                          Text('Create Account',
+                              style: TextStyle(
+                                color: Colors.green,
+                                fontWeight: FontWeight.bold,
+                              )),
+                        ],
+                      ),
+                    ),
+                  ],
+                );
               },
-              child: const Text(
-                'Register Here',
-                style: TextStyle(
-                  color: Colors.blue,
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-          ],
-        );
+              providers: [
+                EmailAuthProvider(),
+              ]);
+        }
+
+        // Render your application if authenticated
         return const LandingScreen();
       },
     );

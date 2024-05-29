@@ -22,6 +22,7 @@ class VendorOrderScreen extends StatelessWidget {
         .snapshots();
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         elevation: 5,
         title: const Text(
           'ORDERS',
