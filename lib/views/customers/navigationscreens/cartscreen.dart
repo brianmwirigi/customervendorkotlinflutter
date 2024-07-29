@@ -76,170 +76,180 @@ class _CartScreenState extends State<CartScreen> {
                     itemBuilder: (context, index) {
                       final cartData = _customerCartProvider.getCartItem.values
                           .toList()[index];
-                      return Card(
-                        child: SizedBox(
-                          child: Row(
-                            children: [
-                              SizedBox(
-                                height: 150,
-                                width: 150,
-                                child: Image.network(
-                                    cartData.productImageUrl[0],
-                                    fit: BoxFit.contain),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.all(10.0),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Row(
-                                      children: [
-                                        const Text(
-                                          'Product Name: ',
-                                          style: TextStyle(color: Colors.green),
-                                        ),
-                                        const SizedBox(
-                                          width: 10,
-                                        ),
-                                        Text(
-                                          cartData.productName,
-                                          style: const TextStyle(fontWeight: FontWeight.bold,),
-                                        ),
-                                      ],
-                                    ),
-                                    Row(
-                                      children: [
-                                        const Text(
-                                          'Product Category: ',
-                                          style: TextStyle(color: Colors.green),
-                                        ),
-                                        const SizedBox(
-                                          width: 10,
-                                        ),
-                                        Text(
-                                          cartData.productCategory.toString(),
-                                          style: const TextStyle(fontWeight: FontWeight.bold,),
-                                        ),
-                                      ],
-                                    ),
-                                    Row(
-                                      children: [
-                                        const Text(
-                                          'Product Price: ',
-                                          style: TextStyle(color: Colors.green),
-                                        ),
-                                        const SizedBox(
-                                          width: 10,
-                                        ),
-                                        Text(
-                                          'kes ${cartData.productPrice.toStringAsFixed(0)}',
-                                          style: const TextStyle(fontWeight: FontWeight.bold,),
-                                        ),
-                                      ],
-                                    ),
-                                    const Row(children: [
-                                      Text(
-                                        'Product Size: ',
-                                        style: TextStyle(color: Colors.green),
-                                      ),
-                                    ]),
-                                    OutlinedButton(
-                                      onPressed: null,
-                                      style: OutlinedButton.styleFrom(
-                                        side: const BorderSide(
-                                            color: Colors.red, width: 2),
-                                      ),
-                                      child: Row(
+                      return SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: Card(
+                          child: SizedBox(
+                            child: Row(
+                              children: [
+                                SizedBox(
+                                  height: 150,
+                                  width: 150,
+                                  child: Image.network(
+                                      cartData.productImageUrl[0],
+                                      fit: BoxFit.contain),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(10.0),
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Row(
                                         children: [
+                                          const Text(
+                                            'Product Name: ',
+                                            style: TextStyle(color: Colors.green),
+                                          ),
                                           const SizedBox(
                                             width: 10,
                                           ),
                                           Text(
-                                            cartData.productSize.toString(),
-                                            style:
-                                                const TextStyle(fontWeight: FontWeight.bold,),
+                                            cartData.productName,
+                                            style: const TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                            ),
                                           ),
                                         ],
                                       ),
-                                    ),
-                                    Row(
-                                      children: [
-                                        Container(
-                                          height: 50,
-                                          width: 150,
-                                          decoration: BoxDecoration(
-                                            color: Colors.green,
-                                            border:
-                                                Border.all(color: Colors.black),
-                                            borderRadius:
-                                                BorderRadius.circular(10),
+                                      Row(
+                                        children: [
+                                          const Text(
+                                            'Product Category: ',
+                                            style: TextStyle(color: Colors.green),
                                           ),
-                                          child: Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceEvenly,
-                                            children: [
-                                              IconButton(
-                                                onPressed:
-                                                    cartData.productQuantity ==
-                                                            1
-                                                        ? null
-                                                        : () {
-                                                            _customerCartProvider
-                                                                .productQuantityDecrement(
-                                                                    cartData);
-                                                          },
-                                                icon: const Icon(
-                                                  Icons.remove,
-                                                  color: Colors.white,
-                                                ),
+                                          const SizedBox(
+                                            width: 10,
+                                          ),
+                                          Text(
+                                            cartData.productCategory.toString(),
+                                            style: const TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                      Row(
+                                        children: [
+                                          const Text(
+                                            'Product Price: ',
+                                            style: TextStyle(color: Colors.green),
+                                          ),
+                                          const SizedBox(
+                                            width: 10,
+                                          ),
+                                          Text(
+                                            'kes ${cartData.productPrice.toStringAsFixed(0)}',
+                                            style: const TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                      const Row(children: [
+                                        Text(
+                                          'Product Size: ',
+                                          style: TextStyle(color: Colors.green),
+                                        ),
+                                      ]),
+                                      OutlinedButton(
+                                        onPressed: null,
+                                        style: OutlinedButton.styleFrom(
+                                          side: const BorderSide(
+                                              color: Colors.red, width: 2),
+                                        ),
+                                        child: Row(
+                                          children: [
+                                            const SizedBox(
+                                              width: 10,
+                                            ),
+                                            Text(
+                                              cartData.productSize.toString(),
+                                              style: const TextStyle(
+                                                fontWeight: FontWeight.bold,
                                               ),
-                                              Text(
-                                                  cartData.productQuantity
-                                                      .toString(),
-                                                  style: const TextStyle(
-                                                      fontSize: 20,
-                                                      color: Colors.white)),
-                                              IconButton(
-                                                onPressed: cartData
-                                                            .cartProductQuantity ==
-                                                        cartData.productQuantity
-                                                    ? null
-                                                    : () {
-                                                        _customerCartProvider
-                                                            .productQuantityIncrement(
-                                                                cartData);
-                                                      },
-                                                icon: const Icon(
-                                                  Icons.add,
-                                                  color: Colors.white,
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                      Row(
+                                        children: [
+                                          Container(
+                                            height: 50,
+                                            width: 150,
+                                            decoration: BoxDecoration(
+                                              color: Colors.green,
+                                              border:
+                                                  Border.all(color: Colors.black),
+                                              borderRadius:
+                                                  BorderRadius.circular(10),
+                                            ),
+                                            child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.spaceEvenly,
+                                              children: [
+                                                IconButton(
+                                                  onPressed:
+                                                      cartData.productQuantity ==
+                                                              1
+                                                          ? null
+                                                          : () {
+                                                              _customerCartProvider
+                                                                  .productQuantityDecrement(
+                                                                      cartData);
+                                                            },
+                                                  icon: const Icon(
+                                                    Icons.remove,
+                                                    color: Colors.white,
+                                                  ),
                                                 ),
-                                              ),
-                                            ],
+                                                Text(
+                                                    cartData.productQuantity
+                                                        .toString(),
+                                                    style: const TextStyle(
+                                                        fontSize: 20,
+                                                        color: Colors.white)),
+                                                IconButton(
+                                                  onPressed: cartData
+                                                              .cartProductQuantity ==
+                                                          cartData.productQuantity
+                                                      ? null
+                                                      : () {
+                                                          _customerCartProvider
+                                                              .productQuantityIncrement(
+                                                                  cartData);
+                                                        },
+                                                  icon: const Icon(
+                                                    Icons.add,
+                                                    color: Colors.white,
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
                                           ),
-                                        ),
-                                        const SizedBox(
-                                          width: 10,
-                                        ),
-                                        IconButton(
-                                          onPressed: () {
-                                            String productKey =
-                                                cartData.productId +
-                                                    cartData.productSize;
-                                            _customerCartProvider
-                                                .removeItemFromCart(productKey);
-                                          },
-                                          icon: const Icon(
-                                            Icons.delete,
-                                            color: Colors.red,
-                                            size: 50,
+                                          const SizedBox(
+                                            width: 10,
                                           ),
-                                        ),
-                                      ],
-                                    )
-                                  ],
+                                          IconButton(
+                                            onPressed: () {
+                                              String productKey =
+                                                  cartData.productId +
+                                                      cartData.productSize;
+                                              _customerCartProvider
+                                                  .removeItemFromCart(productKey);
+                                            },
+                                            icon: const Icon(
+                                              Icons.delete,
+                                              color: Colors.red,
+                                              size: 50,
+                                            ),
+                                          ),
+                                        ],
+                                      )
+                                    ],
+                                  ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                         ),
                       );
@@ -280,7 +290,7 @@ class _CartScreenState extends State<CartScreen> {
                             },
                             child: Container(
                               height: 50,
-                              width: MediaQuery.of(context).size.width - 100,
+                              width: MediaQuery.of(context).size.width ,
                               decoration: BoxDecoration(
                                 color: Colors.green,
                                 borderRadius: BorderRadius.circular(10),
@@ -332,7 +342,7 @@ class _CartScreenState extends State<CartScreen> {
                             Padding(
                               padding: const EdgeInsets.all(5.0),
                               child: Text(
-                                'Total Amount: kes ${_customerCartProvider.totalCartPrice}',
+                                'Total: kes ${_customerCartProvider.totalCartPrice}',
                                 style: const TextStyle(
                                   fontSize: 20,
                                   color: Colors.white,
@@ -353,7 +363,7 @@ class _CartScreenState extends State<CartScreen> {
                               child: const Text(
                                 'CHECKOUT',
                                 style: TextStyle(
-                                  fontSize: 30,
+                                  fontSize: 20,
                                   color: Colors.blue,
                                   fontWeight: FontWeight.bold,
                                   letterSpacing: 5,

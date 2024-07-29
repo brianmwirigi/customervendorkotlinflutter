@@ -20,6 +20,7 @@ class _CustomerEditProfileScreenState extends State<CustomerEditProfileScreen> {
   final TextEditingController _emailController = TextEditingController();
 
   final TextEditingController _phoneNumberController = TextEditingController();
+  final TextEditingController _addressController = TextEditingController();
 
   String? address;
 
@@ -29,6 +30,7 @@ class _CustomerEditProfileScreenState extends State<CustomerEditProfileScreen> {
       _userNameController.text = widget.customerData['userName'];
       _emailController.text = widget.customerData['email'];
       _phoneNumberController.text = widget.customerData['phoneNumber'];
+      _addressController.text = widget.customerData['address'];
     });
     super.initState();
   }
@@ -126,11 +128,7 @@ class _CustomerEditProfileScreenState extends State<CustomerEditProfileScreen> {
                         Padding(
                           padding: const EdgeInsets.all(10.0),
                           child: TextFormField(
-                            onChanged: (value) {
-                              setState(() {
-                                address = value;
-                              });
-                            },
+                            controller: _addressController,
                             decoration: const InputDecoration(
                               labelText: 'Enter Address',
                               labelStyle: TextStyle(
@@ -158,7 +156,7 @@ class _CustomerEditProfileScreenState extends State<CustomerEditProfileScreen> {
                     'userName': _userNameController.text,
                     'email': _emailController.text,
                     'phoneNumber': _phoneNumberController.text,
-                    'address': address,
+                    'address': _addressController.text,
                   }).whenComplete(() {
                     EasyLoading.dismiss();
                     EasyLoading.showSuccess('Profile Updated Successfully');

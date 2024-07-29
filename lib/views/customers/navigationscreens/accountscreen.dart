@@ -109,7 +109,7 @@ class AccountScreen extends StatelessWidget {
                           },
                           child: Container(
                             height: 50,
-                            width: MediaQuery.of(context).size.width - 200,
+                            width: MediaQuery.of(context).size.width - 100,
                             decoration: BoxDecoration(
                               color: Colors.green,
                               borderRadius: BorderRadius.circular(10),

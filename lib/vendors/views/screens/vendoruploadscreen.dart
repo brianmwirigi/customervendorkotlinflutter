@@ -41,13 +41,13 @@ class VendorUploadScreen extends StatelessWidget {
                   child: Text('General'),
                 ),
                 Tab(
-                  child: Text('Shipping'),
+                  child: Text('ship'),
                 ),
                 Tab(
                   child: Text('Attribute'),
                 ),
                 Tab(
-                  child: Text('Images'),
+                  child: Text('Image'),
                 ),
               ],
             ),
