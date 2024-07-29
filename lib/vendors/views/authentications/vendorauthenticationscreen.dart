@@ -31,7 +31,7 @@ class VendorAuthenticationScreen extends StatelessWidget {
                       child: const Row(
                         children: [
                           Text(
-                            'Need A Customer Account?  ',
+                            'Customer?  ',
                           ),
                           Text('Create Account',
                               style: TextStyle(

@@ -65,107 +65,110 @@ class _ProductCheckoutScreenState extends State<ProductCheckoutScreen> {
                             .toList()[index];
                         return Padding(
                           padding: const EdgeInsets.all(5.0),
-                          child: Card(
-                            child: SizedBox(
-                              child: Row(
-                                children: [
-                                  SizedBox(
-                                    height: 150,
-                                    width: 150,
-                                    child: Image.network(
-                                        cartData.productImageUrl[0],
-                                        fit: BoxFit.contain),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.all(10.0),
-                                    child: Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceEvenly,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Row(
-                                          children: [
-                                            const Text(
-                                              'Product Name: ',
-                                              style: TextStyle(
-                                                  color: Colors.green),
-                                            ),
-                                            const SizedBox(
-                                              width: 10,
-                                            ),
-                                            Text(
-                                              cartData.productName,
-                                              style:
-                                                  const TextStyle(fontWeight: FontWeight.bold,),
-                                            ),
-                                          ],
-                                        ),
-                                        Row(
-                                          children: [
-                                            const Text(
-                                              'Product Category: ',
-                                              style: TextStyle(
-                                                  color: Colors.green),
-                                            ),
-                                            const SizedBox(
-                                              width: 10,
-                                            ),
-                                            Text(
-                                              cartData.productCategory
-                                                  .toString(),
-                                              style:
-                                                  const TextStyle(fontWeight: FontWeight.bold,),
-                                            ),
-                                          ],
-                                        ),
-                                        Row(
-                                          children: [
-                                            const Text(
-                                              'Product Price: ',
-                                              style: TextStyle(
-                                                  color: Colors.green),
-                                            ),
-                                            const SizedBox(
-                                              width: 10,
-                                            ),
-                                            Text(
-                                              'kes ${cartData.productPrice.toStringAsFixed(0)}',
-                                              style:
-                                                  const TextStyle(fontWeight: FontWeight.bold,),
-                                            ),
-                                          ],
-                                        ),
-                                        const Row(children: [
-                                          Text(
-                                            'Product Size: ',
-                                            style:
-                                                TextStyle(color: Colors.green),
-                                          ),
-                                        ]),
-                                        OutlinedButton(
-                                          onPressed: null,
-                                          style: OutlinedButton.styleFrom(
-                                            side: const BorderSide(
-                                                color: Colors.red, width: 2),
-                                          ),
-                                          child: Row(
+                          child: SingleChildScrollView(
+                            scrollDirection: Axis.horizontal,
+                            child: Card(
+                              child: SizedBox(
+                                child: Row(
+                                  children: [
+                                    SizedBox(
+                                      height: 150,
+                                      width: 150,
+                                      child: Image.network(
+                                          cartData.productImageUrl[0],
+                                          fit: BoxFit.contain),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.all(10.0),
+                                      child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceEvenly,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Row(
                                             children: [
+                                              const Text(
+                                                'Product Name: ',
+                                                style: TextStyle(
+                                                    color: Colors.green),
+                                              ),
                                               const SizedBox(
                                                 width: 10,
                                               ),
                                               Text(
-                                                cartData.productSize.toString(),
-                                                style: const TextStyle(
-                                                  fontWeight: FontWeight.bold,),
+                                                cartData.productName,
+                                                style:
+                                                    const TextStyle(fontWeight: FontWeight.bold,),
                                               ),
                                             ],
                                           ),
-                                        ),
-                                      ],
+                                          Row(
+                                            children: [
+                                              const Text(
+                                                'Category: ',
+                                                style: TextStyle(
+                                                    color: Colors.green),
+                                              ),
+                                              const SizedBox(
+                                                width: 10,
+                                              ),
+                                              Text(
+                                                cartData.productCategory
+                                                    .toString(),
+                                                style:
+                                                    const TextStyle(fontWeight: FontWeight.bold,),
+                                              ),
+                                            ],
+                                          ),
+                                          Row(
+                                            children: [
+                                              const Text(
+                                                'Price: ',
+                                                style: TextStyle(
+                                                    color: Colors.green),
+                                              ),
+                                              const SizedBox(
+                                                width: 10,
+                                              ),
+                                              Text(
+                                                'kes ${cartData.productPrice.toStringAsFixed(0)}',
+                                                style:
+                                                    const TextStyle(fontWeight: FontWeight.bold,),
+                                              ),
+                                            ],
+                                          ),
+                                          const Row(children: [
+                                            Text(
+                                              'Size: ',
+                                              style:
+                                                  TextStyle(color: Colors.green),
+                                            ),
+                                          ]),
+                                          OutlinedButton(
+                                            onPressed: null,
+                                            style: OutlinedButton.styleFrom(
+                                              side: const BorderSide(
+                                                  color: Colors.red, width: 2),
+                                            ),
+                                            child: Row(
+                                              children: [
+                                                const SizedBox(
+                                                  width: 10,
+                                                ),
+                                                Text(
+                                                  cartData.productSize.toString(),
+                                                  style: const TextStyle(
+                                                    fontWeight: FontWeight.bold,),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ],
+                                      ),
                                     ),
-                                  ),
-                                ],
+                                  ],
+                                ),
                               ),
                             ),
                           ),

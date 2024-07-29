@@ -292,7 +292,7 @@ class _CustomerRegisterScreenState extends State<CustomerRegisterScreen> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Text('Are you a Vendor?'),
+                    const Text('Vendor?'),
                     TextButton(
                       onPressed: () {
                         Navigator.push(context,

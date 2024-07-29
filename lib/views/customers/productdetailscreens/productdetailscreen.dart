@@ -35,7 +35,6 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 10,
-
         iconTheme: const IconThemeData(
           color: Colors.green,
         ),
@@ -158,41 +157,48 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                     ),
                     Padding(
                       padding: const EdgeInsets.all(10.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          const Text(
-                            'Dietary Nutrition Value: ',
-                            style: TextStyle(fontSize: 20),
-                          ),
-                          Text(
-                            widget.productData['productNutritionValue'],
-                            style: const TextStyle(
+                      child: SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            const Text(
+                              'Product Dietary Nutrition: ',
+                              style: TextStyle(fontSize: 20),
+                            ),
+                            Text(
+                              widget.productData['productNutritionValue'],
+                              style: const TextStyle(
                                 letterSpacing: 5,
                                 fontWeight: FontWeight.bold,
-                                color: Colors.green),
-                          ),
-                        ],
+                                color: Colors.green,
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                     ExpansionTile(
-                      title: const Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            'Product Description',
-                            style: TextStyle(
-                              color: Colors.green,
-                              fontSize: 20,
+                      title: const SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: const Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              'Product Description',
+                              style: TextStyle(
+                                color: Colors.green,
+                                fontSize: 20,
+                              ),
                             ),
-                          ),
-                          Text(
-                            'View More',
-                            style: TextStyle(
-                              color: Colors.red,
+                            Text(
+                              'View More',
+                              style: TextStyle(
+                                color: Colors.red,
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                       children: [
                         Text(
@@ -207,27 +213,30 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                     ),
                     Padding(
                       padding: const EdgeInsets.all(10.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          const Text(
-                            'Product shipping date:',
-                            style: TextStyle(
-                                color: Colors.green,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 20),
-                          ),
-                          Text(
-                            formattedDate(widget
-                                .productData['productScheduleDate']
-                                .toDate()),
-                            style: const TextStyle(
-                                fontSize: 15,
-                                letterSpacing: 5,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.blue),
-                          ),
-                        ],
+                      child: SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            const Text(
+                              'Product Shipping date:',
+                              style: TextStyle(
+                                  color: Colors.green,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 20),
+                            ),
+                            Text(
+                              formattedDate(widget
+                                  .productData['productScheduleDate']
+                                  .toDate()),
+                              style: const TextStyle(
+                                  fontSize: 15,
+                                  letterSpacing: 5,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.blue),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                     ExpansionTile(
@@ -303,7 +312,8 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                     productInCart.cartProductQuantity) {
                               ScaffoldMessenger.of(context).showSnackBar(mySnackBar(
                                   context,
-                                  'the product '+ widget.productData['productName'] +
+                                  'the product ' +
+                                      widget.productData['productName'] +
                                       ' in the shhopping cart has reached its limit of: ${productInCart.cartProductQuantity}'));
                             } else if (productInCart != null) {
                               _customerCartProvider
@@ -325,11 +335,11 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                   _selectedSize!,
                                   widget.productData['productScheduleDate'],
                                   widget.productData['vendorId']);
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                  mySnackBar(
-                                      context,
-                                    'The product ' + widget.productData['productName'] +
-                                          ' has been added to cart with quantity 1'));
+                              ScaffoldMessenger.of(context).showSnackBar(mySnackBar(
+                                  context,
+                                  'The product ' +
+                                      widget.productData['productName'] +
+                                      ' has been added to cart with quantity 1'));
                             }
                             setState(() {
                               isInCart = true;
