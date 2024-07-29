@@ -106,7 +106,7 @@ class _ProductCheckoutScreenState extends State<ProductCheckoutScreen> {
                                           Row(
                                             children: [
                                               const Text(
-                                                'Category: ',
+                                                'Product Category: ',
                                                 style: TextStyle(
                                                     color: Colors.green),
                                               ),
@@ -124,7 +124,7 @@ class _ProductCheckoutScreenState extends State<ProductCheckoutScreen> {
                                           Row(
                                             children: [
                                               const Text(
-                                                'Price: ',
+                                                'Product Price: ',
                                                 style: TextStyle(
                                                     color: Colors.green),
                                               ),
@@ -140,7 +140,7 @@ class _ProductCheckoutScreenState extends State<ProductCheckoutScreen> {
                                           ),
                                           const Row(children: [
                                             Text(
-                                              'Size: ',
+                                              'Product Size: ',
                                               style:
                                                   TextStyle(color: Colors.green),
                                             ),
