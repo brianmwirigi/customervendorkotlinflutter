@@ -1,6 +1,5 @@
 import 'package:customervendorkotlinflutter/views/customers/navigationscreens/widgets/bannerwidget.dart';
 import 'package:customervendorkotlinflutter/views/customers/navigationscreens/widgets/categorytextwidget.dart';
-import 'package:customervendorkotlinflutter/views/customers/navigationscreens/widgets/searchinputwidget.dart';
 import 'package:customervendorkotlinflutter/views/customers/navigationscreens/widgets/welcometextwidget.dart';
 import 'package:flutter/cupertino.dart';
 
@@ -14,7 +13,6 @@ class HomeScreen extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const WelcomeTextWidget(),
-          const SearchInputWidget(),
           BannerWidget(),
           CategoryTextWidget(),
         ],

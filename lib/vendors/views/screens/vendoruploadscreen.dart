@@ -38,16 +38,16 @@ class VendorUploadScreen extends StatelessWidget {
             bottom: const TabBar(
               tabs: [
                 Tab(
-                  child: Text('General'),
+                  child: Text('Gen'),
                 ),
                 Tab(
                   child: Text('ship'),
                 ),
                 Tab(
-                  child: Text('Attribute'),
+                  child: Text('Attribt'),
                 ),
                 Tab(
-                  child: Text('Image'),
+                  child: Text('Img'),
                 ),
               ],
             ),

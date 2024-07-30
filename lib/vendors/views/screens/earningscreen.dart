@@ -80,8 +80,8 @@ class EarningScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       Container(
-                        height: 150,
-                        width: MediaQuery.of(context).size.width - 100,
+                        height: 200,
+                        width: MediaQuery.of(context).size.width,
                         decoration: BoxDecoration(
                           color: Colors.green,
                           borderRadius: BorderRadius.circular(20),
@@ -118,8 +118,8 @@ class EarningScreen extends StatelessWidget {
                         ),
                       ),
                       Container(
-                        height: 150,
-                        width: MediaQuery.of(context).size.width - 100,
+                        height: 200,
+                        width: MediaQuery.of(context).size.width,
                         decoration: BoxDecoration(
                           color: Colors.blue,
                           borderRadius: BorderRadius.circular(20),
@@ -157,15 +157,14 @@ class EarningScreen extends StatelessWidget {
                       ),
                       InkWell(
                         onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) {
-                                    return  VendorWithdrawalScreen();}));
+                          Navigator.push(context,
+                              MaterialPageRoute(builder: (context) {
+                            return VendorWithdrawalScreen();
+                          }));
                         },
                         child: Container(
-                            height: 50,
-                            width: MediaQuery.of(context).size.width - 50,
+                            height: 100,
+                            width: MediaQuery.of(context).size.width,
                             decoration: BoxDecoration(
                               color: Colors.green,
                               borderRadius: BorderRadius.circular(20),

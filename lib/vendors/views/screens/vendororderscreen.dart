@@ -200,7 +200,7 @@ class VendorOrderScreen extends StatelessWidget {
                                         children: [
                                           const Text('Customer Photo: '),
                                           CircleAvatar(
-                                            radius: 30,
+                                            radius: 20,
                                             child: ClipOval(
                                               child: Image.network(
                                                 document['CustomerPhoto'],
